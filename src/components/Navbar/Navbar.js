@@ -8,19 +8,15 @@ import { LOGOUT } from "../../constants/actionTypes";
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import Container from '@material-ui/core/Container';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
-import AdbIcon from '@material-ui/icons/Adb';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import LockIcon from '@material-ui/icons/Lock';
 import logo from "../../assets/images/logo.png";
-import env from "../../configs/vars";
-import useStyles from './styles';
 
 const pages = [
   // {
@@ -38,10 +34,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
-  const classes = useStyles();
 
-  const [search, setSearch] = useState('');
-  const [tags, setTags] = useState([]);
 
   const logout = () => {
     dispatch({ type: LOGOUT });
@@ -53,8 +46,6 @@ const Header = () => {
     const token = user?.token;
     if (token) {
       const decodedToken = decode(token);
-      setToken(decodedToken);
-      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
@@ -119,13 +110,13 @@ const Header = () => {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0, }} style={{ paddingLeft: 500 }}>
-            {user?.result ? (
+            {user ? (
               <>
                 <LockOpenIcon onClick={logout}>Logout</LockOpenIcon>
               </>
             ) : (
               <Link href="/auth" variant="body2" style={{ textDecoration: "none", color: "white" }}>
-                <LockIcon ></LockIcon>
+                <LockIcon >Login</LockIcon>
               </Link>
             )}
 

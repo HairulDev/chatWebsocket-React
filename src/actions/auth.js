@@ -1,5 +1,4 @@
-import { AUTH, END_LOADING, START_LOADING } from '../constants/actionTypes';
-import * as api from '../api/index.js';
+import { AUTH, } from '../constants/actionTypes';
 
 export const signin =
   (data) => async (dispatch) => {

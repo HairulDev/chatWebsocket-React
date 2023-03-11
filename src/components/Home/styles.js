@@ -10,13 +10,18 @@ export default makeStyles((theme) => ({
     height: "63vh",
     overflowY: "scroll",
     padding: "0 20px",
-    width: "90%",
+    width: "100%",
+    marginTop: 10,
   },
   messageAvatar: {
-    fontWeight: 600
+    fontWeight: 600,
+    marginRight: -15,
+  },
+  messageName: {
+    fontWeight: 600,
   },
   messageBody: {
-    padding: 6,
+    padding: 4,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: theme.palette.background.default,
   },
