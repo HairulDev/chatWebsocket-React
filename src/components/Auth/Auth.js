@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, Button, Paper, Container, Grid, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -12,42 +12,19 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import { fetchUser } from '../../actions/users';
 
 const SignUp = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const users = [
-    {
-      "id": 1,
-      "name": "Hairul",
-      "image": "174001032023.png",
-      "email": "hairul@opmail.com",
-      "created_at": "2023-03-11T10:04:52.413Z",
-      "updated_at": "2023-03-11T10:04:52.413Z"
-    },
-    {
-      "id": 2,
-      "name": "Alesha",
-      "image": "174102032023.jpeg",
-      "email": "alesha@opmail.com",
-      "created_at": "2023-03-11T10:04:52.413Z",
-      "updated_at": "2023-03-11T10:04:52.413Z"
-    },
-    {
-      "id": 3,
-      "name": "Desi",
-      "image": "174102032023.jpeg",
-      "email": "alesha@opmail.com",
-      "created_at": "2023-03-11T10:04:52.413Z",
-      "updated_at": "2023-03-11T10:04:52.413Z"
-    }
-  ];
+  const { users } = useSelector((state) => state.users);
 
   const [selectedUser, setSelectedUser] = useState(null);
-  const [value, setValue] = useState('female');
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]);
 
 
   const handleRadioChange = (event) => {
@@ -62,7 +39,6 @@ const SignUp = () => {
       dispatch(signin(selectedUser));
       history.push("/");
     }
-    setValue(event.target.value);
   };
 
 

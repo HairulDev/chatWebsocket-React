@@ -99,7 +99,7 @@ const Home = () => {
   return (
     <Container component="main" maxWidth="sm" >
       <Paper className={classes.paper} elevation={6}>
-        <Grid className={classes.container} container alignItems="stretch" spacing={3}>
+        <Grid container alignItems="stretch" spacing={3}>
           <Grid item xs={1} >
             <Avatar src={`${env.urlBucket}/${localStorageRes?.image}`} />
           </Grid>
@@ -113,14 +113,21 @@ const Home = () => {
                   <Grid item xs={2} className={classes.messageAvatar} >
                     <Avatar src={`${env.urlBucket}/${message?.user?.image}`} />
                   </Grid>
-                  <Grid item xs={10}>
-                    <Grid container direction="column" className={classes.messageBody}>
+                  <Grid item xs={10} >
+                    <Grid container direction="column">
+                      <div className={classes.messageBody}>
+                        <Grid item>
+                          <Typography variant="subtitle1" className={classes.messageName}>{message?.user?.name}</Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant="subtitle1">
+                            {message.body}
+                          </Typography>
+                        </Grid>
+                      </div>
                       <Grid item>
-                        <Typography variant="subtitle1" className={classes.messageName}>{message?.user?.name}</Typography>
-                      </Grid>
-                      <Grid item>
-                        <Typography variant="subtitle1">
-                          {message.body}
+                        <Typography variant="caption">
+                          Delete
                         </Typography>
                       </Grid>
                     </Grid>
@@ -128,10 +135,8 @@ const Home = () => {
                 </ListItem>
               ))}
             </List>
-
-
             <Grid item xs={12}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', }}>
                 <TextField
                   autoFocus
                   name="message"
@@ -139,7 +144,7 @@ const Home = () => {
                   variant="outlined"
                   placeholder="Send messages ?"
                   style={{
-                    padding: 20,
+                    padding: "5px 15px 15px 35px",
                     minWidth: 400,
                   }}
                 />

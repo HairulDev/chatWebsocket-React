@@ -1,4 +1,4 @@
-import { FETCH_MESSAGE, CREATE, } from '../constants/actionTypes';
+import { FETCH_MESSAGE, CREATE, DELETE, } from '../constants/actionTypes';
 import axios from "axios";
 import env from '../configs/vars';
 
@@ -49,11 +49,15 @@ export const createMessage =
 //   }
 // };
 
-// export const deletePost = (id) => async (dispatch) => {
-//   try {
-//     await await api.deletePost(id);
-//     dispatch({ type: DELETE, payload: id });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const deleteMessage =
+  (id, successCB, failedCB) => async (dispatch) => {
+    API.delete(`/messages/${id}`)
+      .then((response) => {
+        const resAPI = response.data;
+        console.log("resAPI delete", resAPI);
+        dispatch({ type: DELETE, payload: resAPI });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
