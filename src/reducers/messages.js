@@ -1,4 +1,4 @@
-import { FETCH_MESSAGE, CREATE, DELETE, LIKE, START_LOADING, END_LOADING, } from '../constants/actionTypes';
+import { FETCH_MESSAGE, CREATE, DELETE, START_LOADING, END_LOADING, } from '../constants/actionTypes';
 
 
 export default (state = { isLoading: true, messages: [] }, action) => {

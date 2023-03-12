@@ -29,7 +29,7 @@ const SignUp = () => {
 
   const handleRadioChange = (event) => {
     const userId = event.target.value;
-    const user = users.find(user => user.id === parseInt(userId));
+    const user = users.find(user => user._id.$oid === (userId));
     setSelectedUser(user);
   };
 
@@ -40,7 +40,6 @@ const SignUp = () => {
       history.push("/");
     }
   };
-
 
   return (
     <Container component="main" maxWidth="xs">
@@ -56,16 +55,16 @@ const SignUp = () => {
             <FormControl component="fieldset">
               <RadioGroup>
                 {users.map(user => (
-                  <Grid container key={user.id} className={classes.list}>
+                  <Grid container key={user._id.$oid} className={classes.list}>
                     <Grid item xs={5} >
                       <Avatar src={`${env.urlBucket}/${user.image}`} />
                     </Grid>
                     <Grid item xs={6} >
                       <FormControlLabel
-                        value={user.id}
+                        value={user._id.$oid}
                         control={<Radio />}
                         label={user.name}
-                        checked={selectedUser && selectedUser.id === user.id}
+                        checked={selectedUser && selectedUser._id.$oid === user._id.$oid}
                         onChange={handleRadioChange}
                       />
                     </Grid>

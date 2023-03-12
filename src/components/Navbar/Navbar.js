@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import { useDispatch } from "react-redux";
-import decode from "jwt-decode";
 import { LOGOUT } from "../../constants/actionTypes";
 
 import AppBar from '@material-ui/core/AppBar';
@@ -17,20 +16,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import LockIcon from '@material-ui/icons/Lock';
 import logo from "../../assets/images/logo.png";
+import env from "../../configs/vars";
 
 const pages = [
-  // {
-  //   name: 'Home',
-  //   url: `${env.publicUrl}`
-  // },
-  // {
-  //   name: 'SignUp',
-  //   url: `${env.signUp}`
-  // }}
+  {
+    name: 'Home',
+    url: `${env.publicUrl}`
+  },
+  {
+    name: 'SignUp',
+    url: `${env.signUp}`
+  }
 ]
 const Header = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-  const [token, setToken] = useState();
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
@@ -43,10 +42,6 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const token = user?.token;
-    if (token) {
-      const decodedToken = decode(token);
-    }
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
@@ -92,7 +87,7 @@ const Header = () => {
             >
               {pages.map((page, index) => (
                 <MenuItem key={index}>
-                  <Typography textAlign="center">{page.name}</Typography>
+                  <Typography >{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>

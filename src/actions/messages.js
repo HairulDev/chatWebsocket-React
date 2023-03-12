@@ -38,26 +38,16 @@ export const createMessage =
       });
   };
 
-
-// export const likePost = (id) => async (dispatch) => {
-//   const user = JSON.parse(localStorage.getItem('profile'));
-//   try {
-//     const { data } = await api.likePost(id, user?.token);
-//     dispatch({ type: LIKE, payload: data });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-export const deleteMessage =
-  (id, successCB, failedCB) => async (dispatch) => {
-    API.delete(`/messages/${id}`)
-      .then((response) => {
-        const resAPI = response.data;
-        console.log("resAPI delete", resAPI);
-        dispatch({ type: DELETE, payload: resAPI });
-      })
-      .catch((err) => {
-        console.log(err);
+export const deleteMessage = (id) => async (dispatch) => {
+  API.delete(`/messages/${id}`)
+    .then((response) => {
+      const resAPI = response.data;
+      dispatch({ type: DELETE, payload: id });
+      dispatch({
+        type: FETCH_MESSAGE,
+        payload: resAPI,
       });
-  };
+    })
+    .catch((err) => {
+    });
+};
