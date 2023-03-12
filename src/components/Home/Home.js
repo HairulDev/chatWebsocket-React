@@ -20,9 +20,10 @@ const Home = () => {
 
   const localStorageRes = JSON.parse(localStorage.getItem("profile"));
 
-  useEffect(() => {
+  const ws = new WebSocket(`${env.reactAppWebSocketHost}/cable`);
 
-    const ws = new WebSocket(`${env.reactAppWebSocketHost}/cable`);
+
+  useEffect(() => {
     ws.onopen = () => {
       setGuid(Math.random().toString(36).substring(2, 15));
       ws.send(
@@ -44,13 +45,15 @@ const Home = () => {
       dispatch(fetchMessage([...messages, message]));
     };
 
-  }, [dispatch, messages]);
+  }, [dispatch]);
+
 
   useEffect(() => {
     dispatch(fetchMessage());
   }, [dispatch]);
 
   console.log("messages ========", messages);
+
 
   useEffect(() => {
     if (messagesContainer.current) {
@@ -71,6 +74,20 @@ const Home = () => {
   };
 
   const deleteMessageAct = (id) => {
+
+    ws.send(
+      JSON.stringify({
+        command: "message",
+        identifier: JSON.stringify({
+          channel: "MessagesChannel",
+        }),
+        data: JSON.stringify({
+          delete_message: true,
+          id: id,
+        }),
+      })
+    );
+
     dispatch(deleteMessage(id));
   }
 

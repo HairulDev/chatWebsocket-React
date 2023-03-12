@@ -6,7 +6,7 @@ const API = axios.create({ baseURL: env.reactAppHost });
 
 
 export const fetchMessage =
-  (successCB, failedCB) => async (dispatch) => {
+  (successCB, failedCB) => (dispatch) => {
     API.get(`/messages`)
       .then((response) => {
         const resAPI = response.data;
@@ -23,7 +23,7 @@ export const fetchMessage =
 
 
 export const createMessage =
-  (body, successCB, failedCB) => async (dispatch) => {
+  (body, successCB, failedCB) => (dispatch) => {
     API.post(`/messages`, body)
       .then((response) => {
         const resAPI = response.data;
@@ -38,16 +38,13 @@ export const createMessage =
       });
   };
 
-export const deleteMessage = (id) => async (dispatch) => {
+export const deleteMessage = (id) => () => {
   API.delete(`/messages/${id}`)
     .then((response) => {
       const resAPI = response.data;
-      dispatch({ type: DELETE, payload: id });
-      dispatch({
-        type: FETCH_MESSAGE,
-        payload: resAPI,
-      });
+      console.log("resAPI", resAPI);
     })
     .catch((err) => {
+      console.log("err", err);
     });
 };

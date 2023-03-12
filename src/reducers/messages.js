@@ -15,7 +15,7 @@ export default (state = { isLoading: true, messages: [] }, action) => {
       return { ...state, messages: [...state.messages, action.payload] };
 
     case DELETE:
-      return { ...state, messages: state.messages.filter((message) => message.id !== action.payload) };
+      return { ...state, messages: [...state.messages, action.payload] };
     default:
       return state;
   }
