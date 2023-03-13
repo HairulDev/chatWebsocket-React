@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-
-// import PostDetails from './components/PostDetails/PostDetails';
-import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
-import Auth from './components/Auth/Auth';
+import Navbar from './components/molecules/Navbar/Navbar';
+import Auth from './components/molecules/Auth/Auth';
+import Home from './components/molecules/Home/Home';
 
 
 const App = () => {

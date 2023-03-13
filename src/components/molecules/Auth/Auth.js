@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Avatar, Button, Paper, Container, Grid, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+
+import { Avatar, Button, Paper, Container, Grid, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
-import { signin, } from '../../actions/auth';
-import useStyles from './styles';
-import env from '../../configs/vars';
-
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import { fetchUser } from '../../actions/users';
+
+import useStyles from './styles';
+import env from '../../../configs/vars';
+
+import { signin, } from '../../../actions/auth';
+import { fetchUser } from '../../../actions/users';
 
 const SignUp = () => {
   const classes = useStyles();

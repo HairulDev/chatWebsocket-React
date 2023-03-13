@@ -1,18 +1,20 @@
-import { FETCH_MESSAGE, CREATE, DELETE, START_LOADING, END_LOADING, } from '../constants/actionTypes';
+import { FETCH_MESSAGE, FETCH_MESSAGE_BY, CREATE, DELETE, UPDATE, } from '../constants/actionTypes';
 
 
-export default (state = { isLoading: true, messages: [] }, action) => {
+export default (state = { messages: [], messageBy: [] }, action) => {
   switch (action.type) {
-    case START_LOADING:
-      return { ...state, isLoading: true };
-    case END_LOADING:
-      return { ...state, isLoading: false };
 
     case FETCH_MESSAGE:
       return { ...state, messages: action.payload };
 
+    case FETCH_MESSAGE_BY:
+      return { ...state, messageBy: action.payload };
+
     case CREATE:
       return { ...state, messages: [...state.messages, action.payload] };
+
+    case UPDATE:
+      return { ...state, messages: state.messages.map((message) => (message.id === action.payload.id ? action.payload : message)) };
 
     case DELETE:
       return { ...state, messages: [...state.messages, action.payload] };

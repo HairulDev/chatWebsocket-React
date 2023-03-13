@@ -2,7 +2,6 @@ import { FETCH_ALL, } from '../constants/actionTypes';
 import axios from "axios";
 import env from '../configs/vars';
 
-
 const API = axios.create({ baseURL: env.reactAppHost });
 
 export const fetchUser =

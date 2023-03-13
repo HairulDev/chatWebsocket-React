@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import Link from "@material-ui/core/Link";
 import { useDispatch } from "react-redux";
-import { LOGOUT } from "../../constants/actionTypes";
+import { useHistory, useLocation } from "react-router-dom";
 
+import Link from "@material-ui/core/Link";
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,8 +14,10 @@ import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import LockIcon from '@material-ui/icons/Lock';
-import logo from "../../assets/images/logo.png";
-import env from "../../configs/vars";
+
+import logo from "../../../assets/images/logo.png";
+import env from "../../../configs/vars";
+import { LOGOUT } from "../../../constants/actionTypes";
 
 const pages = [
   {
