@@ -44,3 +44,20 @@
   text-align: center;
   padding: 10px;
 }
+
+.react-confirm-alert-overlay {
+  background-color:transparent !important;
+  opacity: 1 !important;
+}
+
+.react-confirm-alert {
+  max-width: 200px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.react-confirm-alert-body {
+  max-width: 200px;
+  padding: 10px;
+}

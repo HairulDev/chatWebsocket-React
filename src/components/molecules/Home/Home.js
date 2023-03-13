@@ -9,10 +9,14 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
+
 import useStyles from './styles';
 import './styles.css';
 import "../../../App.css";
 import env from "../../../configs/vars";
+
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import { createMessage, deleteMessage, fetchMessages, fetchMessage, updateMessage } from '../../../actions/messages';
 
 const Home = () => {
@@ -94,7 +98,22 @@ const Home = () => {
   }
 
   const deleteMessageAct = (id) => {
-    dispatch(deleteMessage(id));
+    confirmAlert({
+      message: "Delete this message?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            dispatch(deleteMessage(id));
+          },
+        },
+        {
+          label: "No",
+          onClick: () => console.log("user tidak setuju"),
+        },
+      ],
+      overlayClassName: "react-confirm-alert-overlay"
+    });
   }
 
   useEffect(() => {
@@ -177,7 +196,7 @@ const Home = () => {
                           <Typography variant="subtitle1" className={classes.messageText}>{message.body}</Typography>
                         </Grid>
                       </Grid>
-                      <Grid item>
+                      <Grid item xs={2}>
                         {localStorageRes && localStorageRes._id && localStorageRes._id.$oid === message?.user_created && (
                           <Typography
                             variant="subtitle2"

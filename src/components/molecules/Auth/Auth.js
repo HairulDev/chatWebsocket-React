@@ -58,7 +58,7 @@ const SignUp = () => {
                 {users.map(user => (
                   <Grid container key={user._id.$oid} className={classes.list}>
                     <Grid item xs={5} >
-                      <Avatar src={`${env.urlBucket}/${user.image}`} />
+                      <Avatar src={require(`../../../assets/images/${user.image}`)} />
                     </Grid>
                     <Grid item xs={6} >
                       <FormControlLabel

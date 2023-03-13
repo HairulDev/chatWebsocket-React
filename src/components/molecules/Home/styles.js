@@ -23,8 +23,8 @@ export default makeStyles((theme) => ({
   messages: {
     height: "63vh",
     overflowY: "scroll",
-    padding: "0 10px 10px 10px",
-    width: "100%",
+    padding: "0 10px",
+    width: "93%",
     marginTop: 10,
   },
   messageEditButton: {
