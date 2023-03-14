@@ -4,16 +4,9 @@ import env from '../configs/vars';
 
 const API = axios.create({ baseURL: env.reactAppHost });
 
-API.interceptors.request.use((config) => {
-  config.headers['x-forwarded-proto'] = 'http';
-  return config;
-});
-
-
-
 export const fetchMessage =
   (id, successCB, failedCB) => (dispatch) => {
-    API.get(`/messages/${id}`)
+    API.get(`/messages/${id}`, { withCredentials: true })
       .then((response) => {
         const resAPI = response.data;
         dispatch({
@@ -29,7 +22,7 @@ export const fetchMessage =
 
 export const fetchMessages =
   (successCB, failedCB) => (dispatch) => {
-    API.get(`/messages`)
+    API.get(`/messages`, { withCredentials: true })
       .then((response) => {
         const resAPI = response.data;
         dispatch({
@@ -46,7 +39,7 @@ export const fetchMessages =
 
 export const createMessage =
   (body, successCB, failedCB) => (dispatch) => {
-    API.post(`/messages`, body)
+    API.post(`/messages`, { withCredentials: true }, body)
       .then((response) => {
         const resAPI = response.data;
         dispatch({
@@ -64,7 +57,7 @@ export const updateMessage =
   (id, body, successCB, failedCB) => (dispatch) => {
     console.log("id ke updateMessage", id);
     console.log("body ke updateMessage", body);
-    API.put(`/messages/${id}`, body)
+    API.put(`/messages/${id}`, { withCredentials: true }, body)
       .then((response) => {
         const resAPI = response.data;
         dispatch({
@@ -80,7 +73,7 @@ export const updateMessage =
   };
 
 export const deleteMessage = (id) => () => {
-  API.delete(`/messages/${id}`)
+  API.delete(`/messages/${id}`, { withCredentials: true })
     .then((response) => {
       const resAPI = response.data;
     })
