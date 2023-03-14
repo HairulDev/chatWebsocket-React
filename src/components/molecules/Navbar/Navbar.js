@@ -42,6 +42,10 @@ const Header = () => {
     setUser(null);
   };
 
+  const login = () => {
+    history.push('/auth');
+  };
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
@@ -107,13 +111,9 @@ const Header = () => {
           </Box>
           <Box>
             {user ? (
-              <>
-                <LockOpenIcon onClick={logout}>Logout</LockOpenIcon>
-              </>
+              <Typography onClick={logout} variant="subtitle2">LOGOUT</Typography>
             ) : (
-              <Link href="/auth" variant="body2" style={{ textDecoration: "none", color: "white" }}>
-                <LockIcon >Login</LockIcon>
-              </Link>
+              <Typography onClick={login} variant="subtitle2">LOGIN</Typography>
             )}
 
           </Box>
