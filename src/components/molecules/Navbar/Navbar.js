@@ -105,7 +105,7 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0, }} style={{ paddingLeft: 500 }}>
+          <Box>
             {user ? (
               <>
                 <LockOpenIcon onClick={logout}>Logout</LockOpenIcon>
