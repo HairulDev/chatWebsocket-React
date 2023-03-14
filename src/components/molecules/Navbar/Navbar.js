@@ -111,9 +111,9 @@ const Header = () => {
           </Box>
           <Box>
             {user ? (
-              <Typography onClick={logout} variant="subtitle2" sx={{ ml: 2 }}>LOGOUT</Typography>
+              <Typography onClick={logout} variant="subtitle2" style={{ paddingLeft: 10 }}>LOGOUT</Typography>
             ) : (
-              <Typography onClick={login} variant="subtitle2" sx={{ ml: 2 }}>LOGIN</Typography>
+              <Typography onClick={login} variant="subtitle2" style={{ paddingLeft: 10 }}>LOGIN</Typography>
             )}
 
           </Box>
