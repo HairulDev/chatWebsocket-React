@@ -2,7 +2,13 @@ import { FETCH_MESSAGE, CREATE, FETCH_MESSAGE_BY, UPDATE, } from '../constants/a
 import axios from "axios";
 import env from '../configs/vars';
 
-const API = axios.create({ baseURL: env.reactAppHost });
+const API = axios.create({
+  baseURL: env.reactAppHost,
+  headers: {
+    'x-forwarded-proto': 'http',
+  },
+
+});
 
 
 export const fetchMessage =
