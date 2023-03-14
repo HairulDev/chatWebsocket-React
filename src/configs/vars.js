@@ -1,10 +1,10 @@
 
 
 const env = {
-  port: process.env.PORT,
-  reactAppHost: process.env.REACT_APP_HOST,
-  publicUrl: process.env.PUBLIC_URL,
-  reactAppWebSocketHost: process.env.REACT_APP_WS_HOST,
+  port: 3100,
+  reactAppHost: "http://ec2-175-41-187-69.ap-southeast-1.compute.amazonaws.com:3001",
+  publicUrl: "http://ec2-175-41-187-69.ap-southeast-1.compute.amazonaws.com:3000",
+  reactAppWebSocketHost: "ws://ec2-175-41-187-69.ap-southeast-1.compute.amazonaws.com:3001",
 }
 
 export default env;
