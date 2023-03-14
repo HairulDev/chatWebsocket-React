@@ -76,7 +76,7 @@ const Home = () => {
         name: localStorageRes.name,
         email: localStorageRes.email,
         image: localStorageRes.image,
-        user_created: localStorageRes._id.$oid
+        user_created: localStorageRes.id
       }));
       setForm(initialsState)
     } else {
@@ -85,7 +85,7 @@ const Home = () => {
         name: localStorageRes.name,
         email: localStorageRes.email,
         image: localStorageRes.image,
-        user_created: localStorageRes._id.$oid
+        user_created: localStorageRes.id
       }));
       setForm(initialsState)
       handleClose();
@@ -184,7 +184,7 @@ const Home = () => {
                           <Typography variant="subtitle1" className={classes.messageName}>{message.name}</Typography>
                         </Grid>
                         <Grid item xs={3} style={{ textAlign: 'right' }}>
-                          {localStorageRes && localStorageRes._id && localStorageRes._id.$oid === message?.user_created && (
+                          {localStorageRes && localStorageRes.id && localStorageRes.id === parseInt(message?.user_created) && (
                             <Button style={{ color: 'black' }} size="small"
                               onClick={() => updateMessageAct(message.id)}
                             >
@@ -197,7 +197,7 @@ const Home = () => {
                         </Grid>
                       </Grid>
                       <Grid item xs={2}>
-                        {localStorageRes && localStorageRes._id && localStorageRes._id.$oid === message?.user_created && (
+                        {localStorageRes && localStorageRes.id && localStorageRes.id === parseInt(message?.user_created) && (
                           <Typography
                             variant="subtitle2"
                             color="text.secondary"
