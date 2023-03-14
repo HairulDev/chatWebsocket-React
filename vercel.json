@@ -1,0 +1,6 @@
+{
+    "rewrites": [{
+        "source": "/:path*",
+        "destination": "http://ec2-175-41-187-69.ap-southeast-1.compute.amazonaws.com:3001/:path*"
+    }]
+}
