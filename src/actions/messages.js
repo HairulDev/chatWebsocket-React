@@ -6,7 +6,7 @@ const API = axios.create({ baseURL: env.reactAppHost });
 
 export const fetchMessage =
   (id, successCB, failedCB) => (dispatch) => {
-    API.get(`/messages/${id}`, { withCredentials: true })
+    API.get(`/messages/${id}`, { withCredentials: false })
       .then((response) => {
         const resAPI = response.data;
         dispatch({
@@ -22,7 +22,7 @@ export const fetchMessage =
 
 export const fetchMessages =
   (successCB, failedCB) => (dispatch) => {
-    API.get(`/messages`, { withCredentials: true })
+    API.get(`/messages`, { withCredentials: false })
       .then((response) => {
         const resAPI = response.data;
         dispatch({
@@ -39,7 +39,7 @@ export const fetchMessages =
 
 export const createMessage =
   (body, successCB, failedCB) => (dispatch) => {
-    API.post(`/messages`, { withCredentials: true }, body)
+    API.post(`/messages`, { withCredentials: false }, body)
       .then((response) => {
         const resAPI = response.data;
         dispatch({
@@ -57,7 +57,7 @@ export const updateMessage =
   (id, body, successCB, failedCB) => (dispatch) => {
     console.log("id ke updateMessage", id);
     console.log("body ke updateMessage", body);
-    API.put(`/messages/${id}`, { withCredentials: true }, body)
+    API.put(`/messages/${id}`, { withCredentials: false }, body)
       .then((response) => {
         const resAPI = response.data;
         dispatch({
@@ -73,7 +73,7 @@ export const updateMessage =
   };
 
 export const deleteMessage = (id) => () => {
-  API.delete(`/messages/${id}`, { withCredentials: true })
+  API.delete(`/messages/${id}`, { withCredentials: false })
     .then((response) => {
       const resAPI = response.data;
     })
