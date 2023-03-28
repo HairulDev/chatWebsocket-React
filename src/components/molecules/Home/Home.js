@@ -40,7 +40,7 @@ const Home = () => {
   const [form, setForm] = useState(initialsState);
   const localStorageRes = JSON.parse(localStorage.getItem("profile"));
 
-  const ws = new WebSocket(`${env.reactAppWebSocketHost}/cable`);
+  const ws = new WebSocket(`ws://ec2-18-140-62-35.ap-southeast-1.compute.amazonaws.com:3001/cable`);
 
   useEffect(() => {
     ws.onopen = () => {

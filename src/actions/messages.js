@@ -2,7 +2,7 @@ import { FETCH_MESSAGE, CREATE, FETCH_MESSAGE_BY, UPDATE, } from '../constants/a
 import axios from "axios";
 import env from '../configs/vars';
 
-const API = axios.create({ baseURL: env.reactAppHost });
+const API = axios.create({ baseURL: "http://ec2-18-140-62-35.ap-southeast-1.compute.amazonaws.com:3001" });
 
 
 
